@@ -7,4 +7,4 @@
 
 sudo podman build -t wayland-container .
 mkdir -p home
-sudo podman run -it --rm --net=host -v $(realpath home):/home/student --device /dev/dri -e DISPLAY=$DISPLAY -v /sys/fs/cgroup:/sys/fs/cgroup:ro --tmpfs /tmp --tmpfs /run -v /tmp/.X11-unix:/tmp/.X11-unix:Z -v /run/user/1000/bus:/tmp/bus:Z -v "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY":/tmp/wayland-0:Z wayland-container
+sudo podman run -it --rm --net=host -v $(realpath home):/home/student --device /dev/dri -e DISPLAY=$DISPLAY -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /tmp/.X11-unix:/tmp/.X11-unix:Z -v "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY":/tmp/wayland-0:Z localhost/wayland-container
